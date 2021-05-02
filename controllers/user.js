@@ -1,12 +1,13 @@
 const { response } = require("express");
 const User = require('../models/user');
 const bcryptjs = require('bcryptjs');
-const { validationResult } = require("express-validator");
 
-const userGet = (req, res = response) => {
-  res.json({
-    message: 'GET SUCCESFULL'
-  });
+const userGet = async (req, res = response) => {
+
+  const { id } = req.params;
+  const user = await User.findById(id)
+
+  res.json(user);
 }
 
 const userPost = async (req, res = response) => {
