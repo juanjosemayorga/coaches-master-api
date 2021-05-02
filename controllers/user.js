@@ -7,8 +7,12 @@ const userGet = (req, res = response) => {
 }
 
 const userPost = (req, res = response) => {
+
+  const { name } = req.body;
+
   res.json({
-    message: 'POST SUCCESFULL'
+    message: 'POST SUCCESFULL',
+    name
   });
 }
 
