@@ -22,9 +22,17 @@ class Server {
   }
 
   routes() {
-    this.app.get('/', (req, res) => {
-      res.send('Hello World');
+    this.app.get('/api', (req, res) => {
+      res.json({
+        message: 'GET SUCCESFULL'
+      });
     });
+
+    this.app.post('/api', (req, res) => {
+      res.json({
+        message: 'POST SUCCESFULL'
+      })
+    })
   }
 
   listen() {
