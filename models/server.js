@@ -7,6 +7,8 @@ class Server {
     this.app = express();
     this.port = process.env.PORT;
 
+    this.userPath = '/api/user';
+
     // Middlewares
     this.middlewares();
 
@@ -26,17 +28,9 @@ class Server {
   }
 
   routes() {
-    this.app.get('/api', (req, res) => {
-      res.json({
-        message: 'GET SUCCESFULL'
-      });
-    });
 
-    this.app.post('/api', (req, res) => {
-      res.json({
-        message: 'POST SUCCESFULL'
-      })
-    })
+    this.app.use(this.userPath, require('../routes/user'));
+
   }
 
   listen() {
