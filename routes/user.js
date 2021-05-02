@@ -3,10 +3,12 @@ const { check } = require("express-validator");
 const { userGet, userPost } = require("../controllers/user");
 const { emailAlreadyExist, existUserById } = require("../helpers/db-validators");
 const { validateFields } = require("../middlewares/validate-fields");
+const { validateJWT } = require("../middlewares/validate-jwt");
 
 const router = Router();
 
 router.get('/:id', [
+  validateJWT,
   check('id', 'Is not a valid ID').isMongoId(),
   check('id').custom(existUserById),
   validateFields
