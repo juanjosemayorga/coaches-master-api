@@ -14,11 +14,11 @@ const UserSchema = Schema({
     require: [true, 'The password is mandatory']
   },
   status: {
-    type: boolean,
+    type: Boolean,
     default: true
   },
   google: {
-    type: boolean,
+    type: Boolean,
     default: false
   },
 });
